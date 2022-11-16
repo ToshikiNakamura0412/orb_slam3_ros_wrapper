@@ -5,6 +5,13 @@ WORKDIR /home/amsl
 # Update
 RUN apt-get update && apt-get upgrade -y
 
+# catkin build
+RUN apt-get install python3-catkin-tools git -y
+RUN mkdir -p /home/amsl/catkin_ws/src
+# RUN cd /home/amsl/catkin_ws && catkin build
+RUN cd /home/amsl/catkin_ws
+RUN cd /home/amsl/catkin_ws/src && git clone -b develop https://github.com/ToshikiNakamura0412/orb_slam3_ros_wrapper.git
+
 # Install
 RUN apt-get install -y build-essential
 RUN apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
