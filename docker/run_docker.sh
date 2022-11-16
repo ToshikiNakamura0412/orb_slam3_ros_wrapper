@@ -6,8 +6,9 @@ docker run \
     --net=host \
     --rm \
     -it \
+    --env="DISPLAY" \
+    --env="QT_X11_NO_MITSHM=1" \
+    --volume="/tmp/.X11-unit:/tmp/.X11-unix:rw" \
     --mount type=bind,source=/home/amsl/catkin_ws,target=/home/amsl/catkin_ws \
-    --mount type=bind,source=/home/amsl/Dev/ORB_SLAM3,target=/home/amsl/Dev/ORB_SLAM3 \
-    --mount type=bind,source=/home/amsl/Dev/Pangolin,target=/home/amsl/Dev/Pangolin \
-    --mount type=bind,source=/home/amsl/Dev/opencv,target=/home/amsl/Dev/opencv \
+    --mount type=bind,source=/home/amsl/Dev,target=/home/amsl/Dev \
     orb_slam3_ros_wrapper
