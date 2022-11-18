@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t orb_slam3_ros_wrapper2 .
+docker build -t ros-noetic-for-orb_slam3 .
