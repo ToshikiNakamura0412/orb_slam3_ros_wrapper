@@ -4,6 +4,7 @@ docker run \
     --gpus all \
     --ipc=host \
     --net=host \
+    --rm \
     -it \
     --env="DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
