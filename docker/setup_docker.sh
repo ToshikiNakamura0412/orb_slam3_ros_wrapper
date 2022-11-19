@@ -1,22 +1,22 @@
 # build opencv
 cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/cap_ffmpeg_impl.hpp > /home/amsl/Dev/opencv/modules/videoio/src/cap_ffmpeg_impl.hpp
-cp /home/amsl/Dev/opencv
+cd /home/amsl/Dev/opencv
 mkdir build
-cp build
+cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D WITH_CUDA=OFF -D WITH_GTK=ON -D WITH_GTK3=ON -D WITH_GTK_2_X=OFF -DENABLE_PRECOMPILED_HEADERS=OFF -D CMAKE_INSTALL_PREFIX=/usr/local ..
 make -j $(nproc)
 sudo make install
 
 # build pangolin
-cp /home/amsl/Dev/Pangolin
+cd /home/amsl/Dev/Pangolin
 mkdir build
-cp build
+cd build
 cmake .. -D CMAKE_BUILD_TYPE=Release
 make -j $(nproc)
 sudo make install
 
 # build ORB_SLAM3
-cp /home/amsl/Dev/ORB_SLAM3
+cd /home/amsl/Dev/ORB_SLAM3
 ./build.sh
 
 # set ros
@@ -28,5 +28,5 @@ source ~/.bashrc
 
 # build orb_slam3_ros_wrapper
 sudo ldconfig
-cp /home/amsl/catkin_ws
+cd /home/amsl/catkin_ws
 catkin build
