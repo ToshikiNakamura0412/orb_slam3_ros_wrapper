@@ -28,7 +28,7 @@ RUN apt-get install -y \
     libssl-dev \
     libeigen3-dev \
     libcanberra-gtk-module \
-    libcanberra-gtk3-module
+    libcanberra-gtk3-module \
     libgtk-3-dev
 
 # Install ros pkg
