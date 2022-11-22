@@ -1,4 +1,5 @@
-# build opencv
+#!/bin/sh
+#build opencv
 cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/cap_ffmpeg_impl.hpp > /home/amsl/Dev/opencv/modules/videoio/src/cap_ffmpeg_impl.hpp
 cd /home/amsl/Dev/opencv
 mkdir build
@@ -21,14 +22,6 @@ cd /home/amsl/Dev/ORB_SLAM3
 
 # set ros
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-echo "source /home/amsl/catkin_ws/devel/setup.bash" >> ~/.bashrc
-echo "export ROS_WORKSPACE=/home/amsl/catkin_ws" >> ~/.bashrc
-echo "export ROS_PACKAGE_PATH=/home/amsl/catkin_ws/src:$ROS_PACKAGE_PATH" >> ~/.bashrc
-source ~/.bashrc
-
-# build orb_slam3_ros_wrapper
-cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/CMakeLists.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/CMakeLists.txt
-cd /home/amsl/catkin_ws
-catkin build
+echo "source /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/build_catkin_ws.sh" >> ~/.bashrc
+cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/CMakeLists_for_ros.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/CMakeLists.txt
 cat /home/amsl/Dev/ORB_SLAM3/Vocabulary/ORBvoc.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/config/ORBvoc.txt
-sudo ldconfig
