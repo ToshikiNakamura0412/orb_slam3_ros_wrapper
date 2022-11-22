@@ -35,7 +35,7 @@ RUN apt-get install -y \
 RUN apt-get install -y \
     ros-noetic-cv-bridge \
     ros-noetic-image-transport
-RUn apt-get update
+RUN apt-get update
 RUN apt-get install -y ros-noetic-tf
 
 # Clone
