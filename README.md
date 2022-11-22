@@ -4,11 +4,18 @@ git clone https://github.com/ToshikiNakamura0412/orb_slam3_ros_wrapper.git
 ```
 
 # Docker
-## Build & Run
+## Build
 ```
 cd docker
 ./build_docker.sh
+```
+## Run & roslaunch
+```
+cd docker
+xhost +local:
 ./run_docker.sh
+roslaunch ~
+xhost -local:
 ```
 
 # The rest is the original information
