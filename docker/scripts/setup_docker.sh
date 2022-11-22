@@ -22,6 +22,23 @@ cd /home/amsl/Dev/ORB_SLAM3
 
 # set ros
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+<<<<<<< HEAD
 echo "source /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/build_catkin_ws.sh" >> ~/.bashrc
 cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/CMakeLists_for_ros.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/CMakeLists.txt
 cat /home/amsl/Dev/ORB_SLAM3/Vocabulary/ORBvoc.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/config/ORBvoc.txt
+=======
+
+# build orb_slam3_ros_wrapper
+cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/CMakeLists.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/CMakeLists.txt
+cd /home/amsl/catkin_ws
+catkin build
+
+# set orb_slam3_ros_wrapper
+cat /home/amsl/Dev/ORB_SLAM3/Vocabulary/ORBvoc.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/config/ORBvoc.txt
+sudo ldconfig
+
+# set ros
+echo "source /home/amsl/catkin_ws/devel/setup.bash" >> ~/.bashrc
+echo "export ROS_WORKSPACE=/home/amsl/catkin_ws" >> ~/.bashrc
+echo "export ROS_PACKAGE_PATH=/home/amsl/catkin_ws/src:$ROS_PACKAGE_PATH" >> ~/.bashrc
+>>>>>>> 1433547ef4e4080c8e9f1b95ea36ff9ffbbb24b3
