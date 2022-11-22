@@ -46,4 +46,4 @@ RUN git clone -b 4.4.0 https://github.com/opencv/opencv.git /home/amsl/Dev/openc
 RUN git clone https://github.com/stevenlovegrove/Pangolin.git /home/amsl/Dev/Pangolin
 
 # Build
-RUN /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/setup_docker.sh
+RUN /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/setup_docker

@@ -1,4 +1,3 @@
-#!/bin/sh
 #build opencv
 cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/cap_ffmpeg_impl.hpp > /home/amsl/Dev/opencv/modules/videoio/src/cap_ffmpeg_impl.hpp
 cd /home/amsl/Dev/opencv
@@ -22,6 +21,6 @@ cd /home/amsl/Dev/ORB_SLAM3
 
 # set ros
 echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-echo "source /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/build_catkin_ws.sh" >> ~/.bashrc
+echo "source /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/build_catkin_ws" >> ~/.bashrc
 cat /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/docker/scripts/CMakeLists_for_ros.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/CMakeLists.txt
 cat /home/amsl/Dev/ORB_SLAM3/Vocabulary/ORBvoc.txt > /home/amsl/catkin_ws/src/orb_slam3_ros_wrapper/config/ORBvoc.txt

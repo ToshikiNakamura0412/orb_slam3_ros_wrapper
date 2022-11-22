@@ -1,4 +1,3 @@
-#!/bin/sh
 # build orb_slam3_ros_wrapper
 cd /home/amsl/catkin_ws && catkin build
 
