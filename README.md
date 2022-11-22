@@ -1,3 +1,16 @@
+# Installation
+```
+git clone https://github.com/ToshikiNakamura0412/orb_slam3_ros_wrapper.git
+```
+
+# Docker
+## Build & Run
+```
+cd docker
+./build_docker.sh
+./run_docker.sh
+```
+
 # The rest is the original information
 
 # ROS wrapper for ORB-SLAM3
