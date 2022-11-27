@@ -1,29 +1,36 @@
 %YAML:1.0
 
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 Camera.type: "PinHole"
 
 # Left Camera calibration and distortion parameters (OpenCV)
-# Camera.fx: 382.613
-# Camera.fy: 382.613
-# Camera.cx: 320.183
-# Camera.cy: 236.455
 Camera.fx: 615.6707153320312
 Camera.fy: 615.962158203125
 Camera.cx: 328.0010681152344
 Camera.cy: 241.31031799316406
+# Camera.fx: 639.666809
+# Camera.fy: 639.387268
+# Camera.cx: 641.144348
+# Camera.cy: 402.583496
 
 # distortion parameters
 Camera.k1: 0.0
 Camera.k2: 0.0
 Camera.p1: 0.0
 Camera.p2: 0.0
+# Camera.k1: -0.056473
+# Camera.k2: 0.065678
+# Camera.p1: 0.000058
+# Camera.p2: -0.000956
+# Camera.k3: -0.021282
 
 # Camera resolution
 Camera.width: 640
 Camera.height: 480
+# Camera.width: 1280
+# Camera.height: 800
 
 # Camera frames per second
 Camera.fps: 30.0
@@ -31,41 +38,37 @@ Camera.fps: 30.0
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
-# Image scale, it changes the image size to be processed (<1.0: reduce, >1.0: increase)
-Camera.imageScale: 0.5 # 0.5 #0.7071 # 1/sqrt(2)
-
-# Close/Far threshold. Baseline times.
-ThDepth: 40.0
-# stereo baseline times fx
-Camera.bf: 18.143917436
-
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 # IMU Parameters
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 
 # Transformation from body-frame (imu) to left camera
 Tbc: !!opencv-matrix
    rows: 4
    cols: 4
    dt: f
-   data: [1,0,0,0.1536,
-         0,1,0,0.025,
-         0,0,1,0.4004,
-         0.0, 0.0, 0.0, 1.0]
+   data: [ 0., 0., 1., 0.,
+          -1., 0., 0., 0.,
+           0.,-1., 0., 0.,
+           0., 0., 0., 1.]
+   # data: [1,0,0,0.1536,
+   #       0,1,0,0.025,
+   #       0,0,1,0.4004,
+   #       0.0, 0.0, 0.0, 1.0]
 
 # Do not insert KFs when recently lost
-InsertKFsWhenLost: 0
+# InsertKFsWhenLost: 0
 
 # IMU noise (Use those from VINS-mono)
-IMU.NoiseGyro: 1e-3 # 2.44e-4 #1e-3 # rad/s^0.5
-IMU.NoiseAcc: 1e-2 # 1.47e-3 #1e-2 # m/s^1.5
-IMU.GyroWalk: 1e-6 # rad/s^1.5
-IMU.AccWalk: 1e-4 # m/s^2.5
+IMU.NoiseGyro: 1.0e-3 # 2.44e-4 #1e-3 # rad/s^0.5
+IMU.NoiseAcc: 1.0e-2 # 1.47e-3 #1e-2 # m/s^1.5
+IMU.GyroWalk: 1.0e-6 # rad/s^1.5
+IMU.AccWalk: 1.0e-4 # m/s^2.5
 IMU.Frequency: 200
 
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 # ORB Parameters
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 # ORB Extractor: Number of features per image
 ORBextractor.nFeatures: 1250
 
@@ -82,9 +85,9 @@ ORBextractor.nLevels: 8
 ORBextractor.iniThFAST: 20
 ORBextractor.minThFAST: 7
 
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 # Viewer Parameters
-#--------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 Viewer.KeyFrameSize: 0.05
 Viewer.KeyFrameLineWidth: 1
 Viewer.GraphLineWidth: 0.9

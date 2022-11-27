@@ -7,7 +7,8 @@
     <!-- ORB-SLAM3 -->
     <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen">
         <!-- From realsense2_camera node -->
-        <remap from="/camera/image_raw" to="/roomba1/camera/color/image_rect_color"/>
+        <remap from="/camera/image_raw" to="/camera/color/image_raw"/>
+        <!-- <remap from="/camera/image_raw" to="/roomba1/camera/color/image_rect_color"/> -->
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string" value="$(arg voc_file)"/>
@@ -30,7 +31,9 @@
 
     <!-- ROS bag play -->
     <node name="republish" pkg="image_transport" type="republish"  args="compressed raw">
-        <remap from="in"  to="/roomba1/camera/color/image_rect_color"/>
-        <remap from="out" to="/roomba1/camera/color/image_rect_color"/>
+        <!-- <remap from="in"  to="/roomba1/camera/color/image_rect_color"/> -->
+        <!-- <remap from="out" to="/roomba1/camera/color/image_rect_color"/> -->
+        <remap from="in"  to="/camera/color/image_raw"/>
+        <remap from="out" to="/camera/color/image_raw"/>
     </node>
 </launch>
