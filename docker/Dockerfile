@@ -8,6 +8,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
     cmake \
     git \
+    vim \
     python-dev \
     python-numpy \
     python3-catkin-tools \
