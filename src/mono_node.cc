@@ -1,5 +1,5 @@
 /**
-* 
+*
 * Adapted from ORB-SLAM3: Examples/ROS/src/ros_mono.cc
 *
 */
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
     if (voc_file == "file_not_set" || settings_file == "file_not_set")
     {
-        ROS_ERROR("Please provide voc_file and settings_file in the launch file");       
+        ROS_ERROR("Please provide voc_file and settings_file in the launch file");
         ros::shutdown();
         return 1;
     }
@@ -89,6 +89,7 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 
     publish_ros_camera_pose(Twc, msg_time);
     publish_ros_tf_transform(Twc, world_frame_id, cam_frame_id, msg_time);
-    
+    publish_ros_tracking_img(mpSLAM->GetCurrentFrame(), msg_time);
     publish_ros_tracked_mappoints(mpSLAM->GetTrackedMapPoints(), msg_time);
+    publish_ros_all_mappoints(mpSLAM->GetAllMapPoints(), msg_time);
 }
