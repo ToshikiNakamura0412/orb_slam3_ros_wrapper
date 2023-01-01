@@ -14,6 +14,7 @@ std::string world_frame_id, cam_frame_id, imu_frame_id;
 ros::Publisher pose_pub, map_points_pub;
 ros::Publisher all_mappoints_pub;
 image_transport::Publisher tracking_img_pub;
+ros::Publisher visualize_sign_pub, merge_sign_pub, lost_sign_pub;
 
 // ===== Main functions =====
 void setup_ros_publishers(ros::NodeHandle &node_handler, image_transport::ImageTransport &image_transport, ORB_SLAM3::System::eSensor sensor_type)
@@ -22,6 +23,7 @@ void setup_ros_publishers(ros::NodeHandle &node_handler, image_transport::ImageT
     map_points_pub    = node_handler.advertise<sensor_msgs::PointCloud2>("orb_slam3/map_points", 1);
     all_mappoints_pub = node_handler.advertise<sensor_msgs::PointCloud2>("orb_slam3/all_mappoints", 1);
     tracking_img_pub  = image_transport.advertise("orb_slam3/tracking_image", 1);
+    lost_sign_pub     = node_handler.advertise<std_msgs::Bool>("orb_slam3/lost_sign", 1);
 }
 
 void publish_ros_camera_pose(Sophus::SE3f Tcw_SE3f, ros::Time msg_time)
@@ -70,6 +72,13 @@ void publish_ros_all_mappoints(std::vector<ORB_SLAM3::MapPoint*> map_points, ros
 {
     sensor_msgs::PointCloud2 cloud = mappoints_to_pointcloud(map_points, msg_time);
     all_mappoints_pub.publish(cloud);
+}
+
+void publish_ros_slam_state(ORB_SLAM3::SlamState slam_state)
+{
+    std_msgs::Bool flag_lost;
+    flag_lost.data = slam_state.is_lost;
+    lost_sign_pub.publish(flag_lost);
 }
 
 //

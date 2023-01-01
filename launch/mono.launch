@@ -7,6 +7,7 @@
     <!-- ORB-SLAM3 -->
     <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen">
         <!-- From realsense2_camera node -->
+        <!-- <remap from="/camera/image_raw" to="/roomba3/mask_image"/> -->
         <remap from="/camera/image_raw" to="/camera/color/image_raw"/>
         <!-- <remap from="/camera/image_raw" to="/roomba1/camera/color/image_rect_color"/> -->
 

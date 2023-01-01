@@ -2,15 +2,17 @@
 <launch>
     <!-- roomba number -->
     <arg name="roomba" default="roomba1"/>
+    <arg name="image"  default="camera/color/image_rect_color"/>
 
     <!-- file path -->
     <arg name="voc_file"      default="$(find orb_slam3_ros_wrapper)/config/ORBvoc.txt"/>
     <arg name="settings_file" default="$(find orb_slam3_ros_wrapper)/config/RealSense_D435_mono.yaml"/>
 
     <!-- ORB-SLAM3 -->
-    <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen">
-        <!-- From realsense2_camera node -->
-        <remap from="/camera/image_raw" to="/$(arg roomba)/camera/color/image_rect_color"/>
+    <!-- <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen"> -->
+    <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono">
+        <!-- sub -->
+        <remap from="/camera/image_raw" to="/$(arg roomba)/$(arg image)"/>
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string" value="$(arg voc_file)"/>
