@@ -9,8 +9,8 @@
     <arg name="settings_file" default="$(find orb_slam3_ros_wrapper)/config/RealSense_D435_mono.yaml"/>
 
     <!-- ORB-SLAM3 -->
-    <!-- <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen"> -->
-    <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono">
+    <!-- <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono"> -->
+    <node name="orb_slam3_mono" pkg="orb_slam3_ros_wrapper" type="orb_slam3_ros_wrapper_mono" output="screen">
         <!-- sub -->
         <remap from="/camera/image_raw" to="/$(arg roomba)/$(arg image)"/>
 
