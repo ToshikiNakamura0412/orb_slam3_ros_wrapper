@@ -94,4 +94,5 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
     publish_ros_all_mappoints(mpSLAM->GetAllMapPoints(), msg_time);
     publish_ros_slam_state(mpSLAM->slam_state);
     mpSLAM->slam_state.is_visualized = false;
+    mpSLAM->slam_state.is_merged = false;
 }

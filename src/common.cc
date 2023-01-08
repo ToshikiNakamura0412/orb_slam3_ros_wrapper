@@ -25,6 +25,7 @@ void setup_ros_publishers(ros::NodeHandle &node_handler, image_transport::ImageT
     tracking_img_pub   = image_transport.advertise("orb_slam3/tracking_image", 1);
     visualize_sign_pub = node_handler.advertise<std_msgs::Bool>("orb_slam3/visualize_sign", 1);
     lost_sign_pub      = node_handler.advertise<std_msgs::Bool>("orb_slam3/lost_sign", 1);
+    merge_sign_pub     = node_handler.advertise<std_msgs::Bool>("orb_slam3/merge_sign", 1);
 }
 
 void publish_ros_camera_pose(Sophus::SE3f Tcw_SE3f, ros::Time msg_time)
@@ -84,6 +85,9 @@ void publish_ros_slam_state(ORB_SLAM3::SlamState slam_state)
 
     flag.data = slam_state.is_lost;
     lost_sign_pub.publish(flag);
+
+    flag.data = slam_state.is_merged;
+    merge_sign_pub.publish(flag);
 }
 
 //
