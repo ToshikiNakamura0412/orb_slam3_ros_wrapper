@@ -92,6 +92,7 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
     publish_ros_tracking_img(mpSLAM->GetCurrentFrame(), msg_time);
     publish_ros_tracked_mappoints(mpSLAM->GetTrackedMapPoints(), msg_time);
     publish_ros_all_mappoints(mpSLAM->GetAllMapPoints(), msg_time);
+    publish_ros_match_point_num(mpSLAM->GetMatchPointNum());
     publish_ros_slam_state(mpSLAM->slam_state);
     mpSLAM->slam_state.is_visualized = false;
     mpSLAM->slam_state.is_merged = false;

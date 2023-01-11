@@ -14,18 +14,20 @@ std::string world_frame_id, cam_frame_id, imu_frame_id;
 ros::Publisher pose_pub, map_points_pub;
 ros::Publisher all_mappoints_pub;
 image_transport::Publisher tracking_img_pub;
-ros::Publisher visualize_sign_pub, merge_sign_pub, lost_sign_pub;
+ros::Publisher visualize_sign_pub, lost_sign_pub, merge_sign_pub;
+ros::Publisher match_point_num_pub;
 
 // ===== Main functions =====
 void setup_ros_publishers(ros::NodeHandle &node_handler, image_transport::ImageTransport &image_transport, ORB_SLAM3::System::eSensor sensor_type)
 {
-    pose_pub           = node_handler.advertise<geometry_msgs::PoseStamped>("orb_slam3/camera_pose", 1);
-    map_points_pub     = node_handler.advertise<sensor_msgs::PointCloud2>("orb_slam3/map_points", 1);
-    all_mappoints_pub  = node_handler.advertise<sensor_msgs::PointCloud2>("orb_slam3/all_mappoints", 1);
-    tracking_img_pub   = image_transport.advertise("orb_slam3/tracking_image", 1);
-    visualize_sign_pub = node_handler.advertise<std_msgs::Bool>("orb_slam3/visualize_sign", 1);
-    lost_sign_pub      = node_handler.advertise<std_msgs::Bool>("orb_slam3/lost_sign", 1);
-    merge_sign_pub     = node_handler.advertise<std_msgs::Bool>("orb_slam3/merge_sign", 1);
+    pose_pub            = node_handler.advertise<geometry_msgs::PoseStamped>("orb_slam3/camera_pose", 1);
+    map_points_pub      = node_handler.advertise<sensor_msgs::PointCloud2>("orb_slam3/map_points", 1);
+    all_mappoints_pub   = node_handler.advertise<sensor_msgs::PointCloud2>("orb_slam3/all_mappoints", 1);
+    tracking_img_pub    = image_transport.advertise("orb_slam3/tracking_image", 1);
+    visualize_sign_pub  = node_handler.advertise<std_msgs::Bool>("orb_slam3/visualize_sign", 1);
+    lost_sign_pub       = node_handler.advertise<std_msgs::Bool>("orb_slam3/lost_sign", 1);
+    merge_sign_pub      = node_handler.advertise<std_msgs::Bool>("orb_slam3/merge_sign", 1);
+    match_point_num_pub = node_handler.advertise<std_msgs::Int64>("orb_slam3/match_point_num", 1);
 }
 
 void publish_ros_camera_pose(Sophus::SE3f Tcw_SE3f, ros::Time msg_time)
@@ -88,6 +90,13 @@ void publish_ros_slam_state(ORB_SLAM3::SlamState slam_state)
 
     flag.data = slam_state.is_merged;
     merge_sign_pub.publish(flag);
+}
+
+void publish_ros_match_point_num(const int n)
+{
+    std_msgs::Int64 tmp;
+    tmp.data = n;
+    match_point_num_pub.publish(tmp);
 }
 
 //

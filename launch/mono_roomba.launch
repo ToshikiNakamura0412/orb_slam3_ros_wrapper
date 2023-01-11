@@ -24,7 +24,7 @@
     </node>
 
     <!-- Visualization - RViz-->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find orb_slam3_ros_wrapper)/config/mono_roomba.rviz" output="screen"/>
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find orb_slam3_ros_wrapper)/config/mono_roomba.rviz" output="screen"/> -->
 
     <!-- <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="trajectory_server_orb_slam3" output="screen" ns="orb_slam3_ros" > -->
     <!--     <param name="/target_frame_name" value="/world" /> -->
