@@ -1,7 +1,6 @@
 #!/bin/sh
 
 docker run \
-    --gpus all \
     --ipc=host \
     --net=host \
     --rm \
