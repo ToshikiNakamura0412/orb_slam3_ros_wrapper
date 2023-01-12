@@ -1,5 +1,5 @@
 FROM ros:noetic-ros-base
-WORKDIR /home/amsl
+# WORKDIR /home/amsl
 
 # Update
 RUN apt-get update && apt-get upgrade -y
@@ -9,6 +9,7 @@ RUN apt-get install -y \
     cmake \
     git \
     vim \
+    tmux \
     python-dev \
     python-numpy \
     python3-catkin-tools \
