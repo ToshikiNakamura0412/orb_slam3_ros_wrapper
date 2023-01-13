@@ -1,6 +1,7 @@
 FROM ros:noetic-ros-base
 
 # Update
+RUN sed -i.org -e 's|archive.ubuntu.com|ubuntutym.u-toyama.ac.jp|g' /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y
 
 # Install
