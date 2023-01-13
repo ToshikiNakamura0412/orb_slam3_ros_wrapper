@@ -8,4 +8,4 @@ docker run \
     --env="DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unit:/tmp/.X11-unix:rw" \
-    ros-noetic-for-orb_slam3:0.1.0
+    ros-noetic-for-orb-slam3
