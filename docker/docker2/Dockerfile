@@ -2,7 +2,11 @@ FROM ros:noetic-ros-base
 
 # Update
 RUN sed -i.org -e 's|archive.ubuntu.com|ubuntutym.u-toyama.ac.jp|g' /etc/apt/sources.list
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+RUN add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+RUN apt-get upgrade -y
 
 # Install
 RUN apt-get install -y \
